@@ -6,9 +6,11 @@ use std::fs::{File};
 use std::io::Read;
 use std::path::Path;
 
+// TODO: finish lexer and implement compiler, easier said than done
+
 fn main() {
     let mut args = env::args();
-    match args.len() {
+    match args.len() { // Check whether it is using the correct argument
         2 => {
             let file_path = args.nth(1).unwrap();
             let path_object = Path::new(file_path.as_str());
@@ -21,7 +23,8 @@ fn main() {
             let mut contents = String::new();
             file.read_to_string(&mut contents).expect("Was not able to read from the input file, check if it's being used by another program or if it's available.");
 
-
+            let mut wcl_lexer = lexer::Lexer::new(contents);
+            let tokens = wcl_lexer.parse();
         },
         _ => {
             println!("Unexpected input, expected {}, got {}.", 1, args.len()-1);

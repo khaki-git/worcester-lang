@@ -19,12 +19,20 @@ fn main() {
                 println!("Input file does not exist, try creating it or inputting an existing file");
                 return;
             }
+            println!("Opening file...");
             let mut file = File::open(&path_object).expect("File could not be opened");
             let mut contents = String::new();
             file.read_to_string(&mut contents).expect("Was not able to read from the input file, check if it's being used by another program or if it's available.");
+            println!("Read file");
 
+
+            println!("Tokenizing");
             let mut wcl_lexer = lexer::Lexer::new(contents);
-            let tokens = wcl_lexer.parse();
+            wcl_lexer.parse();
+            let tokens = wcl_lexer.tokens;
+
+            // TODO: Remove when 100% of the lexer & compiler is implemented.
+            lexer::repr_tokens(tokens);
         },
         _ => {
             println!("Unexpected input, expected {}, got {}.", 1, args.len()-1);

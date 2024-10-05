@@ -1,3 +1,6 @@
+mod lexer;
+mod structures;
+
 use std::env;
 use std::fs::{File};
 use std::io::Read;
@@ -18,7 +21,7 @@ fn main() {
             let mut contents = String::new();
             file.read_to_string(&mut contents).expect("Was not able to read from the input file, check if it's being used by another program or if it's available.");
 
-            println!("{}", contents)
+
         },
         _ => {
             println!("Unexpected input, expected {}, got {}.", 1, args.len()-1);

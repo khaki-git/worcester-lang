@@ -52,24 +52,42 @@ Throughout this guide, we will be using the dollar sign ($) as the currency in o
 
 ### Integer types
 
-| Type                      | Size (Bytes) | Size (Minimum / Maximum value)
-| :---                      | :---         | :---
-| `integer-8-bit`           | 1            | -128 / 127
-| `integer-16-bit`          | 2            | -32,768 / 32,767
-| `integer-32-bit`          | 4            | -2,147,483,648 / 2,147,483,647
-| `integer-64-bit`          | 8            | -9,223,372,036,854,775,808 / 9,223,372,036,854,775,807
-| `unsigned-integer-8-bit`  | 1            | 0 / 255
-| `unsigned-integer-16-bit` | 2            | 0 / 65,535
-| `unsigned-integer-32-bit` | 4            | 0 / 4,294,967,295
-| `unsigned-integer-64-bit` | 8            | 0 / 18,446,744,073,709,551,615
-
+| Type                      | Size (Bytes) | Size (Minimum / Maximum value)                         |
+|:--------------------------|:-------------|:-------------------------------------------------------|
+| `integer-8-bit`           | 1            | -128 / 127                                             |
+| `integer-16-bit`          | 2            | -32,768 / 32,767                                       |
+| `integer-32-bit`          | 4            | -2,147,483,648 / 2,147,483,647                         |
+| `integer-64-bit`          | 8            | -9,223,372,036,854,775,808 / 9,223,372,036,854,775,807 |
+| `unsigned-integer-8-bit`  | 1            | 0 / 255                                                |
+| `unsigned-integer-16-bit` | 2            | 0 / 65,535                                             |
+| `unsigned-integer-32-bit` | 4            | 0 / 4,294,967,295                                      |
+| `unsigned-integer-64-bit` | 8            | 0 / 18,446,744,073,709,551,615                         |
 
 <div align="center">
   <h2> Boolean </h2>
 </div>
 
-Booleans can either be `true` or `untrue`. *It's as shrimple as that!*
+Booleans can either be `yes`, `yesn''t`, or `maybe`. *It's as shrimple as that!*  
+Variables set to `maybe` have a 50% chance of being true or false and should be used instead of any actual RNG system.  
+As you can see, `yesn''t` has two apostrophes, inside those apostrophes you can store a comment or any other related information you or your team may need to know.
 
+Here's a simple RNG system that uses the `maybe` boolean type:
+
+```cs
+int rng_rangei32(min: int, max: int) {
+    val = min;
+        for (int i = 0; i < max-min; i++) {
+        if (maybe) {
+            val += 1;
+        }
+    }
+    return val
+}
+```
+Due to technical limitations with GitHub and the universal solar flares,
+we cannot demonstrate how to implement this in WCL.
+You will have to translate it from C# into WCL.
+Thank you for your understanding and consideration.
 
 <div align="center">
   <h1><i>⸨</i> Functions <i>⸩</i></h1>
@@ -118,3 +136,4 @@ $ $set-vars$ {[var1] to (value) then [var2] to (value)}
 In a similar fashion to declare-var, we specify the variable names with `[var]`, and we set them to a value of the correct type with `to (value)`. We can, again, use `then` to set two variables.
 
 **Variables *must* be set in the same way as they are declared.** If you want to set two variables at different lines in the code, you must both declare and set them in seperate lines.
+

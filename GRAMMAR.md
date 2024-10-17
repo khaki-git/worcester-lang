@@ -75,8 +75,8 @@ Here's a simple RNG system that uses the `maybe` boolean type:
 
 ```cs
 int rng_rangei32(min: int, max: int) {
-    val = min;
-        for (int i = 0; i < max-min; i++) {
+    int val = min;
+    for (int i = 0; i < max-min; i++) {
         if (maybe) {
             val += 1;
         }
